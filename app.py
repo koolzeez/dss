@@ -1,3 +1,7 @@
+import collections
+import collections.abc
+collections.Mapping = collections.abc.Mapping
+
 from flask import Flask, render_template, request, redirect, url_for, session
 from experta import KnowledgeEngine, Fact, Rule, MATCH, TEST, DefFacts
 import tensorflow as tf
@@ -30,7 +34,7 @@ disease_info = {
         "symptoms": "Mosaic leaf pattern, yellow patches, leaf distortion.",
         "management": "Plant resistant varieties, rogue infected plants."
     },
-    'Healthy': {
+    'H ealthy': {
         "title": "Healthy",
         "description": "No visible disease signs detected.",
         "symptoms": "No spots, yellowing, or leaf distortion.",
