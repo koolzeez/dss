@@ -1,6 +1,6 @@
-# import collections
-# import collections.abc
-# collections.Mapping = collections.abc.Mapping
+import collections
+import collections.abc
+collections.Mapping = collections.abc.Mapping
 
 from flask import Flask, render_template, request, redirect, url_for, session
 from experta import KnowledgeEngine, Fact, Rule, MATCH, TEST, DefFacts
