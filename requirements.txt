@@ -66,9 +66,6 @@ shellingham==1.5.4
 six==1.17.0
 sniffio==1.3.1
 starlette==0.46.2
-tensorboard==2.19.0
-tensorboard-data-server==0.7.2
-tensorflow==2.19.0
 termcolor==3.1.0
 tomlkit==0.13.3
 tqdm==4.67.1
