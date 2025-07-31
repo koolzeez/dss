@@ -11,40 +11,10 @@
           margin: 0;
           white-space: pre-wrap; /* This makes the newlines (\n) work */
       }
+      .btn { margin-top: 20px; }
       .warning .result-item { border-left-color: #f57c00; background-color: #fff3e0; }
       .critical .result-item { border-left-color: #d32f2f; background-color: #ffebee; }
       .healthy .result-item { border-left-color: #388e3c; background-color: #e8f5e9; }
-
-      /* --- Button Styles --- */
-      .button-container {
-        margin-top: 20px;
-        display: flex;
-        gap: 15px; /* Adds space between buttons */
-        flex-wrap: wrap;
-      }
-      .btn {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 1rem;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        color: #fff;
-        background-color: #6c757d; /* A neutral gray */
-        border: 1px solid transparent;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.2s ease-in-out;
-      }
-      .btn:hover {
-        background-color: #5a6268;
-      }
-      .btn-survey {
-        background-color: #007bff; /* A nice blue for attention */
-      }
-      .btn-survey:hover {
-        background-color: #0056b3;
-      }
   </style>
 
   <h2>Final Diagnosis</h2>
@@ -78,10 +48,6 @@
       </div>
     </div>
   {% endif %}
-
-  <div class="button-container">
-    <a href="https://huggingface.co/spaces/koolzzeez/tuber" class="btn">Start a New Diagnosis</a>
-    <a href="https://forms.gle/aHNK11g2GzVHGtNK6" class="btn btn-survey" target="_blank" rel="noopener noreferrer">Help Us Improve! ✨</a>
-  </div>
-
+  <a href="https://huggingface.co/spaces/koolzzeez/tuber" class="btn">Start a New Diagnosis</a>
+  <a href="https://forms.gle/aHNK11g2GzVHGtNK6" class="btn" target="_blank" rel="noopener noreferrer" style="margin-left: 15px;">Help Us Improve! ✨</a>
 {% endblock %}
