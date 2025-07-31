@@ -3,53 +3,85 @@
 {% block title %}Diagnosis Result{% endblock %}
 
 {% block content %}
-  <style>
-      .result-item { background-color: #f8f9fa; border-left: 5px solid #4CAF50; padding: 20px; margin-bottom: 15px; border-radius: 4px; }
-      .result-title { font-size: 1.5rem; font-weight: bold; margin: 0 0 10px 0; }
-      .result-details {
-          font-size: 1.1rem;
-          margin: 0;
-          white-space: pre-wrap; /* This makes the newlines (\n) work */
+  <style>
+      .result-item { background-color: #f8f9fa; border-left: 5px solid #4CAF50; padding: 20px; margin-bottom: 15px; border-radius: 4px; }
+      .result-title { font-size: 1.5rem; font-weight: bold; margin: 0 0 10px 0; }
+      .result-details {
+          font-size: 1.1rem;
+          margin: 0;
+          white-space: pre-wrap; /* This makes the newlines (\n) work */
+      }
+      .warning .result-item { border-left-color: #f57c00; background-color: #fff3e0; }
+      .critical .result-item { border-left-color: #d32f2f; background-color: #ffebee; }
+      .healthy .result-item { border-left-color: #388e3c; background-color: #e8f5e9; }
+
+      /* --- Button Styles --- */
+      .button-container {
+        margin-top: 20px;
+        display: flex;
+        gap: 15px; /* Adds space between buttons */
+        flex-wrap: wrap;
       }
-      .btn { margin-top: 20px; }
-      .warning .result-item { border-left-color: #f57c00; background-color: #fff3e0; }
-      .critical .result-item { border-left-color: #d32f2f; background-color: #ffebee; }
-      .healthy .result-item { border-left-color: #388e3c; background-color: #e8f5e9; }
-  </style>
+      .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+        text-decoration: none;
+        color: #fff;
+        background-color: #6c757d; /* A neutral gray */
+        border: 1px solid transparent;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.2s ease-in-out;
+      }
+      .btn:hover {
+        background-color: #5a6268;
+      }
+      .btn-survey {
+        background-color: #007bff; /* A nice blue for attention */
+      }
+      .btn-survey:hover {
+        background-color: #0056b3;
+      }
+  </style>
 
-  <h2>Final Diagnosis</h2>
-  {% if result_list %}
-    {% for r in result_list %}
-      {% set parts = r.split('|') %}
-      {% set title = parts[0] %}
-      {% set details = parts[1] if parts|length > 1 else "" %}
-      
-      {% set lower_title = title.lower() %}
-      <div class="
-        {% if 'high likelihood' in lower_title or 'critical' in lower_title %}
-          critical
-        {% elif 'moderate likelihood' in lower_title or 'inconclusive' in lower_title %}
-          warning
-        {% elif 'healthy' in lower_title %}
-          healthy
-        {% endif %}
-      ">
-        <div class="result-item">
-          <p class="result-title">{{ title }}</p>
-          <p class="result-details">{{ details | safe }}</p>
-        </div>
-      </div>
-    {% endfor %}
-  {% else %}
-    <div class="warning">
-      <div class="result-item">
-        <p class="result-title">INCONCLUSIVE</p>
-        <p class="result-details">No diagnosis could be determined. Please ensure all steps were completed correctly.</p>
-      </div>
-    </div>
-  {% endif %}
-  <a href="https://huggingface.co/spaces/koolzzeez/tuber" class="btn">Start a New Diagnosis</a>
+  <h2>Final Diagnosis</h2>
+  {% if result_list %}
+    {% for r in result_list %}
+      {% set parts = r.split('|') %}
+      {% set title = parts[0] %}
+      {% set details = parts[1] if parts|length > 1 else "" %}
+      
+      {% set lower_title = title.lower() %}
+      <div class="
+        {% if 'high likelihood' in lower_title or 'critical' in lower_title %}
+          critical
+        {% elif 'moderate likelihood' in lower_title or 'inconclusive' in lower_title %}
+          warning
+        {% elif 'healthy' in lower_title %}
+          healthy
+        {% endif %}
+      ">
+        <div class="result-item">
+          <p class="result-title">{{ title }}</p>
+          <p class="result-details">{{ details | safe }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  {% else %}
+    <div class="warning">
+      <div class="result-item">
+        <p class="result-title">INCONCLUSIVE</p>
+        <p class="result-details">No diagnosis could be determined. Please ensure all steps were completed correctly.</p>
+      </div>
+    </div>
+  {% endif %}
+
+  <div class="button-container">
+    <a href="https://huggingface.co/spaces/koolzzeez/tuber" class="btn">Start a New Diagnosis</a>
+    <a href="https://forms.gle/aHNK11g2GzVHGtNK6" class="btn btn-survey" target="_blank" rel="noopener noreferrer">Help Us Improve! ✨</a>
+  </div>
+
 {% endblock %}
-
-
-<!-- "{{ url_for('index') }}" -->
