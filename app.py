@@ -132,7 +132,7 @@ class TuberDSS(KnowledgeEngine):
     def fallback(self):
         if not self.results:
             self.results.append("""INCONCLUSIVE: No Clear Match|The combination of symptoms provided does not match a specific disease rule in the knowledge base.
-<strong>Next Step:</strong> For an accurate diagnosis, it is highly recommended to consult a local agricultural extension officer or a plant pathology lab.""")
+<strong>Next Step:</strong> The diagnosis is therefore deferred to human expertise for further assessment.""")
 
 
 # ---------- FLASK ROUTES (No changes needed below) ----------
